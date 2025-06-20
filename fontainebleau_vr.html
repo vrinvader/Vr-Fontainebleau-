@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fontainebleau VR Walk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script>
+      AFRAME.registerComponent('streetview-panorama', {
+        init: function () {
+          const el = this.el;
+          const panoramaId = "CAoSLEFGMVFpcE5TSklZanZkZ3FXYy1Tc1Faa3pCcUtRNEZzMlBubjZPYnNGZWFF"; // Fontainebleau panoId
+          const imageUrl = "https://maps.googleapis.com/maps/api/streetview?pano=" + panoramaId + "&size=640x640&key=YOUR_API_KEY";
+
+          el.setAttribute('src', imageUrl);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky streetview-panorama rotation="0 -90 0"></a-sky>
+      <a-camera position="0 1.6 0" look-controls wasd-controls-enabled="false">
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>
